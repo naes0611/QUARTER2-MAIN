@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-import java.util.Scanner;
-/**
- *
- * @author ihub27
- */
+
+import java.util.*;
+
 public class YAUDER_SEAN_Q2_ACT2 {
     static Scanner coffee = new Scanner(System.in);
-    static boolean running = false;
+    static boolean running = true;
     static int bal = 0;
 
     public static void main(String[] args) {
@@ -27,6 +21,9 @@ public class YAUDER_SEAN_Q2_ACT2 {
             select = choose();
             if (select > 5){
                 System.out.println("Invalid choice: Please try again.");
+                delays(1000);
+                clearTerminal();
+
             }else{
                 switch(select){
                     case 1:
@@ -65,6 +62,7 @@ public class YAUDER_SEAN_Q2_ACT2 {
             
             if(coffee.hasNextInt()){
               choice = coffee.nextInt();
+              clearTerminal();
               break;
             }else{
                 coffee.next();
@@ -72,15 +70,17 @@ public class YAUDER_SEAN_Q2_ACT2 {
         }
            return choice;     
     }
-    public static int inputmoney(String ordertype, double price){
+    public static int inputmoney(String ordertype, double price){ // order process
         int money=0;
         while(true){
             System.out.println("You chose "+ordertype+". Price: Php "+price);
-            System.out.println("Insert Money: ");
+            System.out.print("Insert Money: ");
             
             if(coffee.hasNextInt()){
                 money = coffee.nextInt();
                 bal = bal + money;
+                delays(750);
+                clearTerminal();
                 break;
             }else{
                 coffee.next();
@@ -88,163 +88,74 @@ public class YAUDER_SEAN_Q2_ACT2 {
         }
         return money;
     }
+    
+    public static void order(String ordertype, double price){
+        double rbal = bal - price;
+        if(bal==price){
+            System.out.println("Processing..");
+            delays(1000);
+            System.out.println("Exact payment recieved! No change needed.");
+            delays(750);
+            System.out.println("Thank you for ordering "+ordertype+". Enjoy your coffee!");
+        }else if(bal >price){
+            System.out.println("Processing..");
+            delays(1000);
+            System.out.println("Your change is: Php "+rbal );
+            delays(750);
+            System.out.println("Thank you for ordering "+ordertype+". Enjoy your coffee!");
+        }else if (bal <price) {
+            System.out.println("Processing..");
+            delays(1000);
+            System.out.println("Insufficient funds. Transaction failed!");
+            delays(750);
+            System.out.println("Your balance is: " +bal);
+
+        }
+    }
     public static int iforderAgain(){
         int select=0;
         boolean isDone=false;
         do{
-        System.out.println("======Coffee Vending Machine======");
-        System.out.println("Would you like to order again?");
-        System.out.println("[1] Yes");
-        System.out.println("[2] No");
-        System.out.println("==================================");
-        select = coffee.nextInt();
-        if(select > 2){
+            bal = 0;
+            delays(1000);
+            clearTerminal(); 
             
-        }else{
-            switch(select){
-                case 1:
-                    isDone=true;
-                    running=true;
-                    break;
-                case 2:
-                    System.out.println("Thank you!");
-                    isDone=true;
-                    running=false;
-                    break;
+            System.out.println("======Coffee Vending Machine======");
+            System.out.println("Would you like to order again?");
+            System.out.println("[1] Yes");
+            System.out.println("[2] No");
+            System.out.println("==================================");
+            select = coffee.nextInt();
+            if(select > 2){
+
+            }else{
+                switch(select){
+                    case 1:
+                        isDone=true;
+                        running=true;
+                        clearTerminal();
+                        break;
+                    case 2:
+                        delays(500);
+                        System.out.println("Thank you!");
+                        isDone=true;
+                        running=false;
+                        break;
+                }
             }
-        }
         }while(!isDone);
-        return select;
+            return select;
     }
-    public static void order(String ordertype, double price){
-        double rbal = bal - price;
-        if(bal==price){
-            System.out.println("Exact payment recieved! No change needed.");
-            System.out.println("Thank you for ordering "+ordertype+". Enjoy your coffee!");
-        }else if(bal >price){
-            System.out.println("Your change is: Php "+rbal );
-            System.out.println("Thank you for ordering "+ordertype+". Enjoy your coffee!");
-        }else if (bal <price) {
-            System.out.println("Your balance is: " +bal);
-            System.out.println("Insufficient funds. Transaction failed!");
+    public static int delays(int delayMS){ // delay method
+        try{
+            Thread.sleep(delayMS);
+        }catch(InterruptedException e){
+            
         }
+        return delayMS;
+    }
+    public static void clearTerminal(){ // clears termina
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
     
 }
-//        switch (select) {
-//            case 1: 
-//                System.out.println("You chose Americano. Price: Php 110.00");
-//                System.out.println("Insert Money: ");
-//                order++;
-//                int money = coffee.nextInt();
-//                int change = money - 110;
-//                if (money == 110.00) {System.out.println("Exact payment recieved! No change needed.");
-//                    System.out.println("Thank you. Enjoy your coffee!"); 
-//                while (order < 2) {
-//                    System.out.println("======Coffee Vending Machine======");
-//                    System.out.println("Would you like to order again?");
-//                    System.out.println("[1] Yes");
-//                    System.out.println("[2] No");
-//                    System.out.println("==================================");
-//                    int choice = coffee.nextInt();
-//                    
-//                    if (choice == 1) {
-//                        order = order - 2;
-//                    }  else if (choice == 2) {
-//                    order = order + 1000;
-//                    System.out.println("Thank you. Have a nice day!");
-//                    } else if (choice > 2) {
-//                        System.out.println("Invalid Selection! Please try again.");
-//                    order = order - 3;
-//                    }   
-//                }
-//                if (money > 110){System.out.println("Your change is: Php "+change );
-//                    System.out.println("Thank you. Enjoy your coffee!");
-//                order++;
-//                while (order < 2) {
-//                    System.out.println("======Coffee Vending Machine======");
-//                    System.out.println("Would you like to order again?");
-//                    System.out.println("[1] Yes");
-//                    System.out.println("[2] No");
-//                    System.out.println("==================================");
-//                    int choice = coffee.nextInt();
-//                    
-//                    if (choice == 1) {
-//                        order = order - 2;
-//                    }  else if (choice == 2) {
-//                    order = order + 1000;
-//                    System.out.println("Thank you. Have a nice day!");
-//                    } else if (choice > 2) {
-//                        System.out.println("Invalid Selection! Please try again.");
-//                    order = order - 3;
-//                    }
-//                }
-//                if (money < 110) {System.out.println("Insufficient funds. Transaction failed!");
-//                order++;
-//                while (order < 2) {
-//                    System.out.println("======Coffee Vending Machine======");
-//                    System.out.println("Would you like to order again?");
-//                    System.out.println("[1] Yes");
-//                    System.out.println("[2] No");
-//                    System.out.println("==================================");
-//                    int choice = coffee.nextInt();
-//                    
-//                    if (choice == 1) {
-//                        order = order - 2;
-//                    }  else if (choice == 2) {
-//                    order = order + 1000;
-//                    System.out.println("Thank you. Have a nice day!");
-//                    } else if (choice > 2) {
-//                        System.out.println("Invalid Selection! Please try again.");
-//                    order = order - 3;
-//                    }
-//                }
-//            break;
-////            case 2: System.out.println("You chose Latte. Price: Php 120.00");
-//                 System.out.println("Insert Money: ");
-//                int money1 = coffee.nextInt();
-//                int change1 = money1 - 120;
-//                if (money1 == 120.00) {System.out.println("Exact payment recieved! No change needed.");
-//                    System.out.println("Thank you. Enjoy your coffee!"); }
-//                else if (money1 >= 120){System.out.println("Your change is: Php "+change1 );
-//                System.out.println("Thank you. Enjoy your coffee!");}
-//                else if (money1 <= 120) {System.out.println("Insufficient funds. Transaction failed!");
-//                }
-//                break;
-//            case 3: System.out.println("You chose Cappuccino. Price: Php 125.00");
-//                System.out.println("Insert Money: ");
-//                int money2 = coffee.nextInt();
-//                int change2 = money2 - 125;
-//                if (money2 == 125.00) {System.out.println("Exact payment recieved! No change needed.");
-//                    System.out.println("Thank you. Enjoy your coffee!"); }
-//                else if (money2 >= 125){System.out.println("Your change is: Php "+change2 );
-//                System.out.println("Thank you. Enjoy your coffee!");}
-//                else if (money2 <= 125) {System.out.println("Insufficient funds. Transaction failed!");
-//                }
-//                break;
-//            case 4: System.out.println("You chose Espresso. Price: Php 115.00");
-//            System.out.println("Insert Money: ");
-//                int money3 = coffee.nextInt();
-//                int change3 = money3 - 115;
-//                if (money3 == 115.00) {System.out.println("Exact payment recieved! No change needed.");
-//                    System.out.println("Thank you. Enjoy your coffee!"); }
-//                else if (money3 >= 115){System.out.println("Your change is: Php "+change3 );
-//                System.out.println("Thank you. Enjoy your coffee!");}
-//                else if (money3 <= 115) {System.out.println("Insufficient funds. Transaction failed!");
-//                }
-//                break;
-//            case 5: System.out.println("Goodbye! Come back soon.");
-//            break;
-//            default: System.out.println("Invalid selection.");
-//            order--;
-//        }   
-//            System.out.println(order);
-//        
-//   }
-//           coffee.close();
-//   }
-//    }
-//}
-//    }
-//}
-//}
