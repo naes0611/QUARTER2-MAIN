@@ -7,23 +7,26 @@ import java.util.*;
 public class Arrays_LEVEL_1_YAUDER {
     static Scanner array = new Scanner(System.in);
     public static void main(String[] args) {
-        String[] things;
         System.out.print("Enter Array size: ");
         int size = array.nextInt();
-        things = new String[size];
-        System.out.print("Input "+size+" Things: ");
-        for(int i=0; i<size;i++){
-        things[i]= array.next();
-        }
+        System.out.print("Enter Array name: ");
+        String arrayType = array.next();
         
-        System.out.println(things.length +" Things: ");
-        for (int i=0; i<size;i++)
+        String[] Array = new String[size];
+        System.out.println("Input "+size+" types of "+arrayType+": ");
+        for(int i=0; i<size;i++){
+        Array[i] = array.next();
+        }
+        //Display
+        System.out.println("\n"+ size +" "+arrayType+":");
+        for (int i=0; i<Array.length;i++)
         {
-            System.out.println( i+1 +" "+things[i]);
+            System.out.println(Array[i]);
         }   
-            array.close();
-    }
+        array.close();
+    } 
 }
+
 
 
 
