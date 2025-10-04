@@ -21,8 +21,9 @@ public class Arrays_LEVEL_1_YAUDER {
         {
             System.out.println( i+1 +" "+things[i]);
         }   
+            array.close();
     }
-    array.close();
 }
+
 
 
