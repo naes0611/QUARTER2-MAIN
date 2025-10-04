@@ -157,5 +157,6 @@ public class YAUDER_SEAN_Q2_ACT2 {
     public static void clearTerminal(){ // clears termina
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
-    
+    coffee.close();
 }
+
