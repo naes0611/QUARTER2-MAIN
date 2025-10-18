@@ -4,10 +4,11 @@ import static Main.VirtualMobileService.running;
 
 public class Loading {
     static boolean isDone=false;
-    static double bal;
-public static void LoadingProc() {
+    public static double bal = 100;
+public static double LoadingProc() {
     
-    bal = VirtualMobileService.bal;
+    bal = bal;
+    
     boolean validInput = false;
     do {
         Helper.clearTerminal();
@@ -53,5 +54,6 @@ public static void LoadingProc() {
             }
         }
     } while (!isDone);
+    return bal;
 }
 }

@@ -13,6 +13,7 @@ public class GoBooster {
     public static void GoBoosterProc(){
         running=false;
         do {
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("Add more with your Go promo by registering to\n" +

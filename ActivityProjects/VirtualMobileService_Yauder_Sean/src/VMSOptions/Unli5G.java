@@ -13,6 +13,7 @@ public class Unli5G {
     public static void Unli5GProc(){
         running=false;
         do {
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("You can earn reward points when you\n" +

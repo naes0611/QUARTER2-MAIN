@@ -11,6 +11,7 @@ public class Loans {
     public static void LoansProc(){
         running=false;
         do{
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("Globe Loans will move to GlobeOne soon.\n"+

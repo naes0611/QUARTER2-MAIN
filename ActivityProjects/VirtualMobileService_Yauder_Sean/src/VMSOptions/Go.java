@@ -13,6 +13,7 @@ public class Go{
     public static void GoProc(){
         running = false;
         do{
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("You can earn reward points when you\n" +

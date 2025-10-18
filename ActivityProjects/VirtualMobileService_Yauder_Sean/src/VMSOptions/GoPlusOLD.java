@@ -16,6 +16,7 @@ public class GoPlusOLD {
         boolean isDone2 = false;
         boolean isDone3 = false;
         do {
+            isDone = false;
             Helper.clearTerminal();
             System.out.println("You can earn reward points when you purchase your promos via GlobeOne. Download the app now!\n" +
                     "\n" +

@@ -14,6 +14,7 @@ public class AllNet {
     public static void AllNetProc(){
         running=false;
         do {
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("You can earn reward points when you\n" +

@@ -17,6 +17,7 @@ public class GoPlus {
     public static void GoPlusProc(){
         running =false;
         do{
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("You can earn reward points when you purchase your promos via GlobeOne. Download the app now!\n" +

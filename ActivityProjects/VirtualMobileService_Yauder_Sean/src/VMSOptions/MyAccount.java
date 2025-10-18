@@ -13,6 +13,7 @@ public class MyAccount {
         running=false;
 
         do{
+            isDone = false;
             isDone2=false;
             Helper.clearTerminal();
             System.out.println("Manage your Account and check your balance with GlobeOne. Download it now.");

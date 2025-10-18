@@ -2,11 +2,11 @@ package Main;
 
 import java.util.Scanner;
 import  VMSOptions.*;
+import static VMSOptions.Loading.bal;
 
 public class VirtualMobileService {
 
     public static Scanner ussd = new Scanner(System.in);
-    public static double bal = 100;
     public static boolean running = true;
     public static void main(String[] args) {
 
