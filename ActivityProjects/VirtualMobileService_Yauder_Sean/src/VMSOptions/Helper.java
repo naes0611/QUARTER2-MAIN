@@ -15,7 +15,7 @@ public class Helper {
         String input;
         while (true) {
             System.out.print("Select your choice: ");
-            input = ussd.nextLine();
+            input = ussd.nextLine().trim();
             if (input.equalsIgnoreCase("exit")) {
             Helper.exit();
             Helper.clearTerminal();
